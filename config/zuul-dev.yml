@@ -17,7 +17,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
-      
+    instance:
+    prefer-ip-address: true # use ip do register
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port} # The format shown in the interface list also shows IP
+         
 zuul:
   routes:
     item-service: /item-service/**
